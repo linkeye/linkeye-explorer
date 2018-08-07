@@ -1,14 +1,12 @@
-# ETCExplorer
+# Linkeye Explorer
 
-<b>Live Version: [etherhub.io](http://etherhub.io)</b>
-
-Follow the project progress at: [ETC Block Explorer Development](https://github.com/ethereumproject/explorer)
+Follow the project progress at: [Linkeye Block Explorer Development](https://github.com/linkeye/linkeye-explorer)
 
 ## Local installation
 
 Clone the repo
 
-`git clone https://github.com/ethereumproject/explorer`
+`git clone https://github.com/linkeye/linkeye-explorer`
 
 Download [Nodejs and npm](https://docs.npmjs.com/getting-started/installing-node "Nodejs install") if you don't have them
 
@@ -42,10 +40,10 @@ Basic settings:
     "patch":        true,
     "patchBlocks":  100,
     "settings": {
-        "symbol": "ETC",
-        "name": "Ethereum Classic",
-        "title": "Ethereum Classic Block Explorer",
-        "author": "Elaine"
+        "symbol": "LET",
+        "name": "Linkeye",
+        "title": "Linkeye Block Explorer",
+        "author": "GuoShiJiang"
     }
 }
 
