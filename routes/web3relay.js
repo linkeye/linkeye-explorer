@@ -114,7 +114,7 @@ exports.data = function(req, res){
     // from block to end block, paging "toAddress":[addr], 
     // start from creation block to speed things up 
     // TODO: store creation block
-    var filter = {"fromBlock":"0x1d4c00", "toAddress":[addr]};
+    var filter = {"fromBlock":"0x0", "toAddress":[addr]};
     web3.trace.filter(filter, function(err, tx) {
       if(err || !tx) {
         console.error("TraceWeb3 error :" + err)
@@ -192,7 +192,7 @@ exports.data = function(req, res){
     var blockNumOrHash; // Ugly, does the same as blockNumOrHash above
     var uncleIdx = parseInt(arr[1]) || 0;
 
-    if (/^(?:0x)?[0-9a-f]{64}$/i.test(arr[0])) {
+    if (/^(?:let)?[0-9a-f]{64}$/i.test(arr[0])) {
       blockNumOrHash = arr[0].toLowerCase();
       console.log(blockNumOrHash)
     } else {

@@ -74,9 +74,13 @@
                           <th width="12%"> Age </th>
                       </tr>
                   </thead>
-                  <tbody></tbody>
+                  <tbody>
+
+                  </tbody>
               </table>
             </div><!-- End: Datatable tab -->
+
+
             <div class="tab-pane" id="tab_addr_2" ng-show="addr.isContract" ng-class="{active: activeTab == 'tab_addr_2'}">
               <table class="table table-condensed" ng-show="addr.isContract">
                 <thead>
@@ -103,6 +107,8 @@
                 </tbody>
               </table>
             </div>
+
+
             <div class="tab-pane" id="tab_addr_3" ng-show="addr.isContract" ng-class="{active: activeTab == 'tab_addr_3'}">
               <contract-source></contract-source>
             </div>

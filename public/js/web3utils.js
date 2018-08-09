@@ -7,7 +7,7 @@
  * @return {Boolean}
 */
 var isStrictAddress = function (address) {
-    return /^0x[0-9a-f]{40}$/i.test(address);
+    return /^LET[0-9a-f]{40}$/i.test(address);
 };
 
 /**
@@ -18,10 +18,10 @@ var isStrictAddress = function (address) {
  * @return {Boolean}
 */
 var isAddress = function (address) {
-    if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) {
-        // check if it has the basic requirements of an address
+    if (!/^(LET)?[0-9a-f]{40}$/i.test(address)) {
+        // check if it has the basic requirements of an address ///^0x[0-9a-f]{40}$/i.test(address) || /^LET[0-9a-f]{40}$/i.test(address)
         return false;
-    } else if (/^(0x)?[0-9a-f]{40}$/.test(address) || /^(0x)?[0-9A-F]{40}$/.test(address)) {
+    } else if (/^(0x)?[0-9a-f]{40}$/.test(address) || /^(0x)?[0-9A-F]{40}$/.test(address) || /^(LET)?[0-9a-f]{40}$/.test(address) || /^(LET)?[0-9A-F]{40}$/.test(address)) {
         // If it's all small caps or all all caps, return true
         return true;
     } else {
@@ -31,10 +31,10 @@ var isAddress = function (address) {
 };
 
 var isTransaction = function (tx) {
-    if (!/^(0x)?[0-9a-f]{64}$/i.test(tx)) {
+    if (!/^(LET)?[0-9a-f]{64}$/i.test(tx)) {
         // check if it has the basic requirements of an address
         return false;
-    } else if (/^(0x)?[0-9a-f]{64}$/.test(tx) || /^(0x)?[0-9A-F]{64}$/.test(tx)) {
+    } else if (/^(0x)?[0-9a-f]{64}$/.test(tx) || /^(0x)?[0-9A-F]{64}$/.test(tx) || /^(LET)?[0-9a-f]{64}$/.test(tx) || /^(LET)?[0-9A-F]{64}$/.test(tx)) {
         // If it's all small caps or all all caps, return true
         return true;
     } else {

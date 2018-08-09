@@ -60,11 +60,10 @@ BlocksApp.controller('HeaderController', ['$scope', '$location', 'setupObj', fun
     $scope.form = {};
     $scope.searchQuery = function(s) {
         var search = s.toLowerCase();
-
         $scope.form.searchInput="";
         $scope.form.searchForm.$setPristine();
         $scope.form.searchForm.$setUntouched();
-        if (isAddress(search)) 
+        if (isAddress(search))
             $location.path("/addr/" + search);
         else if (isTransaction(search))
             $location.path("/tx/" + search);

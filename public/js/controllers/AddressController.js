@@ -41,10 +41,10 @@ angular.module('BlocksApp').controller('AddressController', function($stateParam
         ajax: function(data, callback, settings) {
           data.addr = $scope.addrHash;
           data.count = $scope.addr.count;
+          // console.log(data);
           $http.post('/addr', data).then(function(resp) {
-            // save data
+            console.log(resp)
             $scope.data = resp.data;
-            // check $scope.records* if available.
             resp.data.recordsTotal = $scope.recordsTotal ? $scope.recordsTotal : resp.data.recordsTotal;
             resp.data.recordsFiltered = $scope.recordsFiltered ? $scope.recordsFiltered : resp.data.recordsFiltered;
             callback(resp.data);
@@ -54,28 +54,28 @@ angular.module('BlocksApp').controller('AddressController', function($stateParam
           if (data.draw > 1)
             return;
 
-          $http.post('/addr_count', data).then(function(resp) {
-            $scope.addr.count = resp.data.recordsTotal;
-            $scope.addr.mined = parseInt(resp.data.mined);
-
-            data.count = resp.data.recordsTotal;
-
-            // set $scope.records*
-            $scope.recordsTotal = resp.data.recordsTotal;
-            $scope.recordsFiltered = resp.data.recordsFiltered;
-            // draw table if $scope.data available.
-            if ($scope.data) {
-              $scope.data.recordsTotal = resp.data.recordsTotal;
-              $scope.data.recordsFiltered = resp.data.recordsFiltered;
-              callback($scope.data);
-            }
-          });
+          // $http.post('/addr_count', data).then(function(resp) {
+          //   $scope.addr.count = resp.data.recordsTotal;
+          //   $scope.addr.mined = parseInt(resp.data.mined);
+          //
+          //   data.count = resp.data.recordsTotal;
+          //
+          //   // set $scope.records*
+          //   $scope.recordsTotal = resp.data.recordsTotal;
+          //   $scope.recordsFiltered = resp.data.recordsFiltered;
+          //   // draw table if $scope.data available.
+          //   if ($scope.data) {
+          //     $scope.data.recordsTotal = resp.data.recordsTotal;
+          //     $scope.data.recordsFiltered = resp.data.recordsFiltered;
+          //     callback($scope.data);
+          //   }
+          // });
         },
         "lengthMenu": [
                     [10, 20, 50, 100, 150, 500],
                     [10, 20, 50, 100, 150, 500] // change per page values here
                 ],
-        "pageLength": 20, 
+        "pageLength": 20,
         "order": [
             [6, "desc"]
         ],
@@ -85,22 +85,32 @@ angular.module('BlocksApp').controller('AddressController', function($stateParam
           "infoEmpty": ":(",
           "infoFiltered": "(filtered from _MAX_ total txs)"
         },
-        "columnDefs": [ 
+
+        "columnDefs": [
+
           { "targets": [ 5 ], "visible": false, "searchable": false },
+
           {"type": "date", "targets": 6},
+
           {"orderable": false, "targets": [0,2,3,4]},
+
           { "render": function(data, type, row) {
                         if (data != $scope.addrHash)
-                          return '<a href="/addr/'+data+'">'+data+'</a>'
-                        else
-                          return data
+                        {
+                            return '<a href="/addr/'+data+'">'+data+'</a>'
+                        } else {
+                            return data
+                        }
                       }, "targets": [2,3]},
+
           { "render": function(data, type, row) {
                         return '<a href="/block/'+data+'">'+data+'</a>'
                       }, "targets": [1]},
+
           { "render": function(data, type, row) {
                         return '<a href="/tx/'+data+'">'+data+'</a>'
                       }, "targets": [0]},
+
           { "render": function(data, type, row) {
                         return getDuration(data).toString();
                       }, "targets": [6]},
@@ -131,8 +141,7 @@ angular.module('BlocksApp').controller('AddressController', function($stateParam
           url: '/compile',
           data: {"addr": scope.addrHash, "action": "find"}
         }).then(function(resp) {
-          console.log(resp.data);
-          scope.contract = resp.data;
+            scope.contract = resp.data;
         });
       }
   }

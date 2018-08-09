@@ -39,7 +39,7 @@ module.exports = function(app){
 
 var getAddr = function(req, res){
   // TODO: validate addr and tx
-  var addr = req.body.addr.toLowerCase();
+  var addr = req.body.addr.toUpperCase();
   var count = parseInt(req.body.count);
 
   var limit = parseInt(req.body.length);
@@ -68,8 +68,8 @@ var getAddr = function(req, res){
       res.write(JSON.stringify(data));
       res.end();
     });
-
 };
+
 var getAddrCounter = function(req, res) {
   var addr = req.body.addr.toLowerCase();
   var count = parseInt(req.body.count);

@@ -15,7 +15,7 @@ var mongoose = require( 'mongoose' );
 var Block = mongoose.model('Block');
 var DAOCreatedToken = mongoose.model('DAOCreatedToken');
 var DAOTransferToken = mongoose.model('DAOTransferToken');
-var InternalTx     = mongoose.model( 'InternalTransaction' );
+var InternalTx = mongoose.model( 'InternalTransaction' );
 
 if (typeof web3 !== "undefined") {
   web3 = new Web3(web3.currentProvider);
